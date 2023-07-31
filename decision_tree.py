@@ -31,8 +31,8 @@ def calculate_information_gain(data, labels):
 
     gain = parent_entropy * np.ones(n) #initialization of gains for every attribute
 
-    # we use a matrix dot product to sum to make it more compatible with sparse matrices
-    num_x = data.dot(np.ones(m)) # number of examples containing each feature
+
+    num_x = data.dot(np.ones(m)) 
     prob_x = num_x / m # fraction of examples containing each feature
     prob_not_x = 1 - prob_x
 

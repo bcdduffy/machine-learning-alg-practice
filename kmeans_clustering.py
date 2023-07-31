@@ -14,7 +14,7 @@ class CustomKMeans():
     # Find K cluster centers & label all samples
     def fit(self, data, plot_steps=False):
         # Fit the PCA module & Transform our data for later graphing
-        #print("HHHHHHHHh")
+
         self.pca = PCA(2).fit(data)
         self.data = pd.DataFrame(data)
         self.data_pca = pd.DataFrame(self.pca.transform(data))
@@ -38,11 +38,7 @@ class CustomKMeans():
             if plot_steps:
                 self.plot_state()
                 self.iteration += 1
-        #self.inertia_ = self.inertia_ - last_inertia
-        # while (not converged): # psuedocode - up to you to implement stopping criterion
-        #print(data.shape())
-        #self.labels_ = [random.randint(0,self.k_-1) for i in range(n)] # Update
-    #self.inertia_ = np.sum(np.arange(n)) # Update
+
     # show data & centroids at each iteration when testing performance
 
 
@@ -61,11 +57,11 @@ class CustomKMeans():
     def update_clusters_intertia(self, data):
         all_dist_centroids = sklearn.metrics.pairwise_distances(data, self.centroids)
         all_distances = np.amin(all_dist_centroids,axis=1)
-        #print(all_distances)
+
         square_dist = np.square(all_distances)
         self.labels_ = np.argmin(all_dist_centroids,axis=1)
         self.inertia_ = np.sum(square_dist)
-        #print(sum_square)
+
         return self.labels_, self.inertia_
     def centroid_updates(self, data):
         all_clust_range = range(self.k_)

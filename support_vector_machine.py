@@ -96,11 +96,10 @@ def kernel_svm_train(data, labels, params):
     gram_matrix = (gram_matrix + gram_matrix.T) / 2
     m = gram_matrix.shape[0]
     # Setting up the inputs to the quadratic programming solver that solves:
-    # minimize 0.5 x^T (hessian) x - (weights)^T x
-    # subject to (eq_coeffs) x = (eq_constants)
 
 
-    # and (lower_bounds) <= x <= (upper_bounds)
+
+
     hessian = np.outer(labels, labels) * gram_matrix
     weights = np.ones(m)
     eq_coeffs = np.zeros((1, m))
@@ -147,7 +146,7 @@ def kernel_svm_predict(data, model):
 
         gram_matrix = polynomial_kernel(data, model['support_vectors'], model['params']['order'])
     else:
-# use a linear kernel by default
+
         gram_matrix = linear_kernel(data, model['support_vectors'])
     scores = gram_matrix.dot(
         model['alphas'] * model['sv_labels']) + model['bias']
