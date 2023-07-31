@@ -112,7 +112,7 @@ def recursive_tree_train(data, labels, depth, max_depth, num_classes):
     :return: dictionary encoding the learned decision tree node
     :rtype: dict
     """
-    # TODO: INSERT YOUR CODE FOR LEARNING THE DECISION TREE STRUCTURE HERE
+
 
     class_list = np.unique(labels)
     num_class_mat = np.unique(labels,return_counts=True)[1]
